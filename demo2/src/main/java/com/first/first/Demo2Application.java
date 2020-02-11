@@ -22,7 +22,7 @@ public class Demo2Application {
 		// 이 3가지를 다 사용하는것이 @SpringBootApplication
 		//@EnableAutoConfiguration autoconfigure 안에
 		// org.springframework.boot.autoconfigure.EnableAutoConfiguration
-		// 으로 설정함
+		// 으로 키값을 설정함
 		
 		SpringApplication application = new SpringApplication(Demo2Application.class);
 		application.setWebApplicationType(WebApplicationType.NONE);
