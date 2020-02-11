@@ -1,5 +1,7 @@
 package com.first.first;
 
+import org.apache.catalina.LifecycleException;
+import org.apache.catalina.startup.Tomcat;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,8 +14,9 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class Demo2Application {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws LifecycleException {
 
+		////////////////////////////////////////////////////////////////////////
 		//@EnableAutoConfiguration 은 web application으로 만들려고함
 		//@Configuration
 		//@ComponentScan
@@ -29,6 +32,24 @@ public class Demo2Application {
 		application.run(args);
 
 		// SpringApplication.run(Demo2Application.class, args);
+		
+		////////////////////////////////////////////////////////////////////////
+		
+		////////////////////////////////////////////////////////////////////////
+		
+		Tomcat tomcat = new Tomcat();
+		tomcat.setPort(9090);
+		
+		//tomcat.getHost().setAppBase("work");
+		System.out.println(tomcat.getHost().getAppBase());
+		tomcat.addContext("/", "../work"); // 내꺼 appbase가 webapps로 되어있어서 work로 바꿔줌 아니면 위에서 setAppbase로 work로바꿔줘도됨
+		
+		tomcat.getConnector(); // tomcat 9이상은 이거 있어야 켜짐
+		tomcat.start();
+		
+		//tomcat.getServer().await();
+		
+		/////////////////////////////////////////////////////////////////////////
 	}
 	
 	
