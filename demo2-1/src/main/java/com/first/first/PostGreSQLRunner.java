@@ -11,7 +11,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class PostGreSQLRunner implements ApplicationRunner {
 
 	@Autowired
@@ -35,14 +35,14 @@ public class PostGreSQLRunner implements ApplicationRunner {
 			System.out.println(connection.getMetaData().getUserName());
 
 			Statement statement = connection.createStatement();
-			String sql = "CREATE TABLE account(ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY (id))";
+			//String sql = "CREATE TABLE account(ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY (id))";
 			//USER는 postgre에선 KEYWORD라 사용하면안됨
-			statement.executeUpdate(sql);
+			//statement.executeUpdate(sql);
 			connection.commit();
 			//connection.close();
 		}
 		
-		jdbcTemplate.execute("INSERT INTO account VALUES (2, 'ds') ");
+		jdbcTemplate.execute("INSERT INTO account VALUES (3, 'ds2') ");
 		
 	}
 
