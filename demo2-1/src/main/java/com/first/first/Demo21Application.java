@@ -2,14 +2,19 @@ package com.first.first;
 
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.connector.Connector;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.first.first.account.MongoAccountRepository;
+import com.first.first.account.MongoDBAccount;
 
 @SpringBootApplication
 @RestController
@@ -39,6 +44,29 @@ public class Demo21Application {
 		
 		return connector;
 	}
+	
+	@Autowired
+	MongoTemplate mongoTemplate;
+	
+	@Autowired
+	MongoAccountRepository mongoAccountRepository;
+	
+	@Bean
+	public ApplicationRunner applicationRunner() {
+		
+		
+		return args -> {
+			MongoDBAccount acc = new MongoDBAccount();
+			acc.setEmail("ds@ggg");
+			acc.setUsername("ds");
+			
+			//mongoTemplate.insert(acc);
+			mongoAccountRepository.insert(acc);
+			System.out.println("finished");
+			
+		};
+	}
+	
 	
 	public static void main(String[] args) throws LifecycleException {
 		
