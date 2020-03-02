@@ -2,22 +2,22 @@ package com.first.first;
 
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.connector.Connector;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 //import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//import com.first.first.account.MongoAccountRepository;
-import com.first.first.account.MongoDBAccount;
+import de.codecentric.boot.admin.server.config.EnableAdminServer;
 
 @SpringBootApplication
-@RestController
+//@RestController
+@EnableAdminServer
+//@Import({SecurityConfig.class})
 //@EnableConfigurationProperties(DemoProperties.class) 자동으로 등록되어있음
 public class Demo21Application {
 

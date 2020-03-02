@@ -1,9 +1,9 @@
 package com.first.first.account;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.redis.core.RedisHash;
+//import org.springframework.data.redis.core.RedisHash;
 
-@RedisHash("accounts")
+//@RedisHash("accounts")
 public class RedisAccount {
 
 	@Id
